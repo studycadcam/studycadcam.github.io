@@ -1,0 +1,135 @@
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft Yahei', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* 外层容器：最大1600px居中，阶梯式内边距 */
+        .container {
+            max-width: 1600px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* 头部：核心1200px居中，导航左/返回右，弹性布局 */
+        .header {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* 左侧导航中心文字样式 */
+        .header-text {
+            color: #1e293b;
+            font-size: 20px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            background-color: #f0f9ff;
+            border: 1px solid #e0f7ff;
+            white-space: nowrap;
+        }
+
+        /* 右侧返回首页按钮+悬浮效果 */
+        .home-link {
+            text-decoration: none;
+            color: #0ea5e9;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            background-color: #e0f7ff;
+            border: 1px solid #bae6fd;
+            white-space: nowrap;
+        }
+
+        .home-link:hover {
+            background-color: #0ea5e9;
+            color: #fff;
+            border-color: #0ea5e9;
+        }
+
+        /* 内容区：白色卡片+阴影，阶梯式内边距 */
+        .content {
+            max-width: 100%;
+            margin: 50px 0;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        /* 图片区标题：居中，保留原有字体/间距适配 */
+        .pic-title {
+            font-size: 24px;
+            color: #1e293b;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center; /* 核心：标题居中 */
+            line-height: 1.4;
+        }
+
+        /* 图片序号：字体放大+上50px+下20px 精准间距，自适应微调 */
+        .content p {
+            font-size: 22px; /* 字体放大，视觉突出 */
+            font-weight: 500;
+            margin-top: 50px; /* 距离上部50px */
+            margin-bottom: 20px; /* 距离下部20px */
+            color: #1e293b; /* 和标题同色，视觉统一 */
+        }
+        /* 图片仅保留和下一个序号的间距，取消多余底部边距 */
+        .content img {
+            display: block;
+            margin: 0 auto; /* 确保图片绝对居中 */
+        }
+
+        /* ========== 媒体查询：统一底部，兼容所有浏览器 ========== */
+        /* 平板端：992px以下 */
+        @media (max-width: 992px) {
+            .container { padding: 30px 18px; }
+            .header { margin-bottom: 45px; }
+            .header-text { font-size: 18px; padding: 7px 14px; }
+            .home-link { padding: 7px 14px; }
+            .content { padding: 30px 25px; }
+            .pic-title { font-size: 22px; margin-bottom: 20px; }
+            .content p { font-size: 20px; } /* 平板端序号字体微调 */
+        }
+
+        /* 小平板/大屏手机：768px以下 */
+        @media (max-width: 768px) {
+            .container { padding: 20px 15px; }
+            .header { margin-bottom: 30px; flex-direction: column; align-items: flex-start; }
+            .header-text, .home-link { width: 100%; text-align: center; }
+            .content { padding: 20px 15px; }
+            .pic-title { font-size: 20px; margin-bottom: 18px; }
+            .content p { font-size: 19px; margin-top: 40px; } /* 窄屏序号上间距微调，更舒适 */
+        }
+
+        /* 小屏手机：576px以下（核心最小适配） */
+        @media (max-width: 576px) {
+            .container { padding: 15px 10px; }
+            .header { margin-bottom: 20px; gap: 8px; }
+            .header-text { font-size: 16px; padding: 6px 12px; }
+            .home-link { font-size: 14px; padding: 6px 12px; }
+            .content { padding: 15px 10px; }
+            .pic-title { font-size: 18px; margin-bottom: 15px; }
+            .content p { font-size: 18px; margin-top: 30px; } /* 小屏序号字体/上间距适配，不拥挤 */
+        }

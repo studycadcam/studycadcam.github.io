@@ -1,0 +1,222 @@
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft Yahei', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* 自适应核心：最大宽度1200px，阶梯式适配多断点 */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px 20px;
+            /* 平板端：992px以下 */
+            @media (max-width: 992px) {
+                padding: 30px 18px;
+            }
+            /* 小平板/大屏手机：768px以下 */
+            @media (max-width: 768px) {
+                padding: 20px 15px;
+            }
+            /* 小屏手机：576px以下（最少两列核心断点） */
+            @media (max-width: 576px) {
+                padding: 15px 10px;
+            }
+        }
+
+        /* 头部容器：弹性布局放左侧文字+右侧返回按钮，阶梯式自适应 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            /* 平板端 */
+            @media (max-width: 992px) {
+                margin-bottom: 45px;
+            }
+            /* 小平板/大屏手机 */
+            @media (max-width: 768px) {
+                margin-bottom: 30px;
+                flex-direction: column; /* 竖排：文字在上，按钮在下 */
+                align-items: flex-start;
+                gap: 12px;
+            }
+            /* 小屏手机 */
+            @media (max-width: 576px) {
+                margin-bottom: 20px;
+                gap: 8px;
+            }
+        }
+
+        /* 左侧同风格文字容器：和返回按钮视觉统一，阶梯式适配字体 */
+        .header-text {
+            color: #1e293b;
+            font-size: 20px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            background-color: #f0f9ff;
+            border: 1px solid #e0f7ff;
+            /* 平板端 */
+            @media (max-width: 992px) {
+                font-size: 18px;
+                padding: 7px 14px;
+            }
+            /* 小屏手机 */
+            @media (max-width: 576px) {
+                font-size: 16px;
+                padding: 6px 12px;
+                width: 100%; /* 占满宽度，适配窄屏 */
+            }
+        }
+
+        /* 右侧返回首页变色悬浮框 - 阶梯式适配 */
+        .home-link {
+            text-decoration: none;
+            color: #0ea5e9;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            background-color: #e0f7ff;
+            border: 1px solid #bae6fd;
+            display: inline-block;
+            /* 平板端 */
+            @media (max-width: 992px) {
+                padding: 7px 14px;
+            }
+            /* 小屏手机 */
+            @media (max-width: 576px) {
+                padding: 6px 12px;
+                font-size: 14px;
+                width: 100%; /* 占满宽度，适配窄屏 */
+                text-align: center;
+            }
+        }
+        .home-link:hover {
+            background-color: #0ea5e9;
+            color: #ffffff;
+            border-color: #0ea5e9;
+        }
+
+        /* 内容区自适应 - 卡片阴影，阶梯式适配内边距 */
+        .content {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            /* 平板端 */
+            @media (max-width: 992px) {
+                padding: 30px 25px;
+            }
+            /* 小平板/大屏手机 */
+            @media (max-width: 768px) {
+                padding: 20px 15px;
+            }
+            /* 小屏手机 */
+            @media (max-width: 576px) {
+                padding: 15px 10px;
+            }
+        }
+
+        .content h2 {
+            font-size: 24px;
+            color: #1e293b;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+            /* 平板端 */
+            @media (max-width: 992px) {
+                font-size: 22px;
+                margin-bottom: 25px;
+            }
+            /* 小平板/大屏手机 */
+            @media (max-width: 768px) {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            /* 小屏手机 */
+            @media (max-width: 576px) {
+                font-size: 18px;
+                margin-bottom: 15px;
+                padding-bottom: 8px;
+            }
+        }
+
+        .link-list {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px; /* 上下左右统一间距，适配多列 */
+            /* 小屏手机微调间距，避免拥挤 */
+            @media (max-width: 576px) {
+                gap: 6px;
+            }
+        }
+
+        /* 核心修改：阶梯式列数 大屏6列→平板4列→小平板3列→手机2列（最少两列） */
+        .link-list li {
+            /* 大屏（≥992px）：每行6列（核心需求），精准计算宽度-间距分摊 */
+            flex: 0 0 calc(100%/6 - (8px*5)/6);
+            /* 平板端（992px以下）：4列，视觉更舒展 */
+            @media (max-width: 992px) {
+                flex: 0 0 calc(25% - 6px);
+            }
+            /* 小平板/大屏手机（768px以下）：3列，适配窄屏 */
+            @media (max-width: 768px) {
+                flex: 0 0 calc(33.333% - 5.333px);
+            }
+            /* 小屏手机（576px以下）：最少2列 */
+            @media (max-width: 576px) {
+                flex: 0 0 calc(50% - 3px);
+            }
+        }
+
+        /* 紧凑内边距，适配多列布局，阶梯式微调字体/内边距 */
+        .link-list a {
+            text-decoration: none;
+            color: #0ea5e9;
+            font-size: 18px;
+            padding: 8px 15px;
+            display: block;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            background-color: #f0f9ff;
+            border: 1px solid #e0f7ff;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; /* 超长文字省略，防止布局错乱 */
+            /* 平板端 */
+            @media (max-width: 992px) {
+                font-size: 17px;
+                padding: 7px 12px;
+            }
+            /* 小平板/大屏手机 */
+            @media (max-width: 768px) {
+                font-size: 16px;
+                padding: 7px 10px;
+            }
+            /* 小屏手机（两列）：微调字体/内边距，保持紧凑 */
+            @media (max-width: 576px) {
+                font-size: 15px;
+                padding: 6px 8px;
+            }
+        }
+
+        /* 悬浮仅纯颜色变化，所有设备效果一致 */
+        .link-list a:hover {
+            color: #ffffff;
+            background-color: #0ea5e9;
+            border-color: #0ea5e9;
+        }
