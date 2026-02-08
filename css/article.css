@@ -16,9 +16,9 @@
             height: auto;
         }
 
-        /* 外层容器：最大1600px居中，阶梯式内边距 */
+        /* 外层容器：最大1800px居中，阶梯式内边距 */
         .container {
-            max-width: 1600px;
+            max-width: 1800px;
             width: 100%;
             margin: 0 auto;
             padding: 40px 20px;
